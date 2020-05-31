@@ -1,19 +1,74 @@
 {% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
+{% load static %}
+    {% block sub_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main_style.css' %}">
+    {% endblock %}
+    {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="alert">{{ error_log_div }}</div>
-        <form method="post" action="{% url 'user:my_login' %}">
-            {% csrf_token %}
-           <div class="form-group">
-               <label for="login">Login</label>
-               <input type="text" class="form-control" id="login" name="login">
-          </div>
-          <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <div id="main_form" class="col-10 col-md-4 mx-auto border border-dark mt-4 login-box">
+        <div class="alert col-12 text-center text-danger font-weight-bold">{{ error_log_div }}</div>
+        <div id="main_form_login">
+            <form method="post" action="{% url 'user:my_login' %}" class="col-12">
+                {% csrf_token %}
+               <div class="user-box">
+                   <input type="text"  id="login" name="login" placeholder="Podaj Login...">
+              </div>
+              <div class="user-box">
+                  <input type="password"  id="password" name="password" placeholder="Podaj hasło...">
+              </div>
+              <button type="submit" class=" col-12 mx-auto">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Zaloguj Się
+              </button>
+            </form>
+            <p class="mt-5 text-center">
+                <a href="#">Zapomniałeś hasła?</a><br>
+                <a href="#main_form_register" id="switch_to_register">Zarejestruj się</a>
+            </p>
+        </div>
+        <div id="main_form_register" >
+            <form method="post" action="{% url 'user:my_login' %}" class="col-12">
+                {% csrf_token %}
+                 <div class="user-box">
+                   <input type="text"  id="name" name="name" placeholder="Podaj Imie...">
+              </div>
+                 <div class="user-box">
+                   <input type="text"  id="surname" name="surname" placeholder="Podaj Nazwisko...">
+              </div>
+               <div class="user-box">
+                   <input type="text"  id="email" name="email" placeholder="Podaj Email...">
+              </div>
+              <div class="user-box">
+                  <input type="password"  id="passwd" name="passwd" placeholder="Podaj hasło...">
+              <button type="submit" class=" col-12 mx-auto">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Zarejestruj się
+              </button>
+            </form>
+            <p class="mt-5 text-center">
+                <a href="#main_form_login" id="switch_to_login">Zaloguj się</a>
+            </p>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.getElementById('switch_to_register').addEventListener('click',function(){
+            document.getElementById('main_form_login').style.display = 'none';
+            document.getElementById('main_form_register').style.display = 'block';
+        });
+         document.getElementById('switch_to_login').addEventListener('click',function(){
+            document.getElementById('main_form_login').style.display = 'block';
+            document.getElementById('main_form_register').style.display = 'none';
+        });
+    </script>
 {% endblock %}

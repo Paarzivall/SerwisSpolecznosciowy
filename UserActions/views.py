@@ -13,10 +13,12 @@ def my_login(request):
                 login(request, user)
                 return render(request, 'index.html')
             else:
-                error = {'error_log_div': 'Your account was inactive.'}
+                error = {'error_log_div': 'Twoje konto jest nieaktywne.'}
+                # error = {'error_log_div': 'Your account was inactive.'}
                 return render(request, 'UsersActions/login.html', error)
         else:
-            error = {'error_log_div': 'Invalid login details given.'}
+            error = {'error_log_div': 'Nieprawidłowe dane logowania.'}
+            # error = {'error_log_div': 'Invalid login details given.'}
             return render(request, 'UsersActions/login.html', error)
     else:
         return render(request, 'UsersActions/login.html')
@@ -26,3 +28,7 @@ def my_login(request):
 def my_logout(request):
     logout(request)
     return render(request, 'UsersActions/logout.html')
+
+
+def register():
+    pass
