@@ -6,7 +6,7 @@
     {% block title %}Login{% endblock %}
 
 {% block content %}
-    <div id="main_form" class="col-10 col-md-4 mx-auto border border-dark mt-4 login-box">
+    <div id="main_form" class="col-10 col-md-6 mx-auto border border-dark mt-3 h-md-75 login-box">
         <div class="alert col-12 text-center text-danger font-weight-bold">{{ error_log_div }}</div>
         <div id="main_form_login">
             <form method="post" action="{% url 'user:my_login' %}" class="col-12">
@@ -33,24 +33,37 @@
         <div id="main_form_register" >
             <form method="post" action="{% url 'user:my_login' %}" class="col-12">
                 {% csrf_token %}
-                 <div class="user-box">
-                   <input type="text"  id="name" name="name" placeholder="Podaj Imie...">
-              </div>
-                 <div class="user-box">
-                   <input type="text"  id="surname" name="surname" placeholder="Podaj Nazwisko...">
-              </div>
-               <div class="user-box">
-                   <input type="text"  id="email" name="email" placeholder="Podaj Email...">
-              </div>
-              <div class="user-box">
-                  <input type="password"  id="passwd" name="passwd" placeholder="Podaj hasło...">
-              <button type="submit" class=" col-12 mx-auto">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  Zarejestruj się
-              </button>
+                <div class="user-box">
+                    <input type="text"  id="name" name="name" placeholder="Podaj Imie...">
+                </div>
+                <div class="user-box">
+                    <input type="text"  id="surname" name="surname" placeholder="Podaj Nazwisko...">
+                </div>
+                <div class="user-box">
+                    <input type="text"  id="new_login" name="new_login" placeholder="Podaj Login...">
+                </div>
+                <div class="user-box">
+                    <input type="text"  id="email" name="email" placeholder="Podaj Email...">
+                </div>
+                <div class="user-box">
+                    <input type="password"  id="passwd" name="passwd" placeholder="Podaj hasło...">
+                </div>
+                <select id="day" name="day" class="user-box col-3">
+                    <option>Day</option>
+                </select>
+                <select id="month" name="month" class="user-box col-4">
+                    <option>Month</option>
+                </select>
+                <select id="year" name="year" class="user-box col-4">
+                    <option>Year</option>
+                </select>
+                <button type="submit" class=" col-12 mx-auto">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Zarejestruj się
+                </button>
             </form>
             <p class="mt-5 text-center">
                 <a href="#main_form_login" id="switch_to_login">Zaloguj się</a>
